@@ -2,6 +2,7 @@
 # $Id: create3hash.pl,v 1.1 2014/02/05 01:56:47 beirne Exp beirne $
 # I want to take a line in the BIND 9 query log form:
 # Feb  4 20:01:20 LSD named[54670]: client 68.87.69.149#36202: query: nationalcycle.com IN A -ED (204.248.57.218)
+#Feb  1 13:03:54 LSD named[635]: client 165.254.102.79#43721 (margot2.us.mensa.org): query: margot2.us.mensa.org IN AAAA -EDC (204.248.57.218)
 # and print out a report listing each domain queried with a count
 # of the number of times it was asked for and a second section listing
 # all of the types of queries and the count for each too.
@@ -73,10 +74,10 @@ NEXTLINE: while (<>) {
     chomp;	# strip record separator
     @Fld = split;
 #	print $#Fld;
-    if ($#Fld == 12 ) {
-	$querytype{(lc$Fld[10])}++;
-	$thisrunq{(lc$Fld[10])}++;
-	$totals{(lc$Fld[10])}++;
+    if ($#Fld == 13 ) {
+	$querytype{(lc$Fld[11])}++;
+	$thisrunq{(lc$Fld[11])}++;
+	$totals{(lc$Fld[11])}++;
 # if the queried domain is in one of the domains we support,
 # keep track of how many times it is queried for.
 #	if ($Fld[9] is right anchored substing of a key of the
@@ -84,7 +85,7 @@ NEXTLINE: while (<>) {
 #	foreach $key (keys %chizone) {
 # the above works, but is way too slow and this is not much better.
 	foreach $key (@chinames) {
-	  if ($Fld[8] =~ m/.*\.$key\z|^$key\z/) {
+	  if ($Fld[9] =~ m/.*\.$key\z|^$key\z/) {
 	    $domains{$key}++;
 	    $thisrund{$key}++;
 	    if (lc$Fld[0] eq "dec") {
