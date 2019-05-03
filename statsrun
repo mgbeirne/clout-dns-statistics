@@ -1,0 +1,7 @@
+cd stats
+if test -f chizone.db
+then rm chizone.db
+fi
+./createchi.pl
+gunzip -c /var/log/dnsqueries.log.0.gz |./create3hash.pl
+
