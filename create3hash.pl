@@ -1,4 +1,4 @@
-#!/usr/bin/perl -w
+#!/usr/local/bin/perl -w
 # $Id: create3hash.pl,v 1.1 2014/02/05 01:56:47 beirne Exp beirne $
 # I want to take a line in the BIND 9 query log form:
 # Feb  4 20:01:20 LSD named[54670]: client 68.87.69.149#36202: query: nationalcycle.com IN A -ED (204.248.57.218)

@@ -1,4 +1,4 @@
-#!/usr/bin/perl
+#!/usr/local/bin/perl
 # $Id: monthly.pl,v 1.3 2004/06/14 17:39:08 beirne Exp $
 # I want to take a line in the BIND query log form:
 # Nov 25 00:00:44 dns3 named[114]: XX /143.231.1.67/www.ci.chi.il.us/A/IN
